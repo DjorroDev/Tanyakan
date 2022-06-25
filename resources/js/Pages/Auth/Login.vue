@@ -2,14 +2,9 @@
     <Card class="mx-auto w-1/2">
         <template #default>
             <h3 class="text-center text-4xl font-bold">Login</h3>
-            <div
-                v-if="$page.props.flash.error"
-                class="mt-4 border-l-4 border-red-500 bg-red-100 px-4 py-2 text-red-700"
-                role="alert"
-            >
-                <p class="font-bold">Error</p>
-                <p>Email atau Password tidak sama</p>
-            </div>
+            <FlashMessage type="error">
+                Email atau Password tidak sama
+            </FlashMessage>
             <form
                 @submit.prevent="submit"
                 class="4/5 mx-auto mt-8 space-y-4"
@@ -77,6 +72,7 @@
 <script setup>
 import { useForm } from "@inertiajs/inertia-vue3";
 import Card from "../../Components/Card.vue";
+import FlashMessage from "../../Components/FlashMessage.vue";
 
 const form = useForm({
     email: null,

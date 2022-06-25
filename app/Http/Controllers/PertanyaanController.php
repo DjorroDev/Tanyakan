@@ -16,7 +16,7 @@ class PertanyaanController extends Controller
     public function index()
     {
         return Inertia::render('Pertanyaan/Index', [
-            'quests' => Pertanyaan::all()->load('user')
+            'quests' => Pertanyaan::with('user')->latest()->get()
         ]);
     }
 
@@ -38,7 +38,17 @@ class PertanyaanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'title' => 'required|min:5',
+            'body' => 'required',
+            'tingkat' => 'required',
+        ]);
+
+        $validatedData['user_id'] = auth()->user()->id;
+
+        Pertanyaan::create($validatedData);
+
+        return redirect('/pertanyaan')->with('success', 'Pertanyaan berhasil ditanyakan! Silahkan tunggu atau bertanya lagi.');
     }
 
     /**

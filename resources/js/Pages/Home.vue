@@ -58,6 +58,11 @@
                     </div>
                 </div>
             </div>
+            <Link
+                href="/pertanyaan"
+                class="my-3 text-xl underline hover:text-primary-500 active:text-primary-700"
+                >Lebih banyak pertanyaan...</Link
+            >
         </div>
     </section>
 </template>

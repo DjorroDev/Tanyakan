@@ -7,7 +7,7 @@
             <div
                 v-for="quest in quests"
                 :key="quest.id"
-                class="mb-4 w-full max-w-sm lg:flex lg:max-w-full"
+                class="mb-4 w-full max-w-sm lg:max-w-full"
             >
                 <div
                     class="flex flex-col justify-between rounded-md border border-slate-200 p-4 leading-normal dark:border-slate-500"

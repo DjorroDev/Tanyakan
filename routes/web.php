@@ -24,19 +24,21 @@ Route::get('/', function () {
 
 Route::get('/home', function () {
     return Inertia::render('Home', [
-        'quests' => Pertanyaan::all()->load('user'),
+        'quests' => Pertanyaan::with('user')->latest()->take(3)->get(),
     ]);
 })->name('home');
 
-Route::get('/login', [LoginController::class, 'create']);
-Route::post('/login', [LoginController::class, 'store']);
-
-Route::get('/register', [RegisterController::class, 'create']);
-Route::post('/register', [RegisterController::class, 'store']);
+Route::get('/login', [LoginController::class, 'create'])->middleware('guest')->name('login');
+Route::post('/login', [LoginController::class, 'store'])->middleware('guest');
+Route::post('/logout', [LoginController::class, 'destroy'])->middleware('auth');
 
 
+Route::get('/register', [RegisterController::class, 'create'])->middleware('guest');
+Route::post('/register', [RegisterController::class, 'store'])->middleware('guest');
 
-Route::resource('pertanyaan', PertanyaanController::class);
+
+
+Route::resource('pertanyaan', PertanyaanController::class)->middleware('auth');
 
 // Route::controller(PertanyaanController::class)->group(function () {
 //     Route::get('/pertanyaan', 'index');
