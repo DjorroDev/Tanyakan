@@ -23,7 +23,7 @@
             </div>
         </nav>
     </header>
-    <main class="h-screen bg-slate-50 pt-10 dark:bg-base-900 dark:text-white">
+    <main class="h-full bg-slate-50 pt-10 dark:bg-base-900 dark:text-slate-100">
         <section class="container mx-auto max-w-4xl">
             <slot />
         </section>
