@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\PertanyaanController;
 use App\Models\Pertanyaan;
 use Illuminate\Support\Facades\Route;
@@ -25,6 +27,10 @@ Route::get('/home', function () {
         'quests' => Pertanyaan::all()->load('user'),
     ]);
 })->name('home');
+
+Route::get('/login', [LoginController::class, 'create']);
+Route::get('/register', [RegisterController::class, 'create']);
+
 
 Route::resource('pertanyaan', PertanyaanController::class);
 
