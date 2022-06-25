@@ -16,7 +16,7 @@ class PertanyaanController extends Controller
     public function index()
     {
         return Inertia::render('Pertanyaan/Index', [
-            'quests' => Pertanyaan::all()->latest()
+            'quests' => Pertanyaan::all()->load('user')
         ]);
     }
 
@@ -49,7 +49,9 @@ class PertanyaanController extends Controller
      */
     public function show(Pertanyaan $pertanyaan)
     {
-        //
+        return Inertia::render('Pertanyaan/Show', [
+            'quest' => $pertanyaan
+        ]);
     }
 
     /**

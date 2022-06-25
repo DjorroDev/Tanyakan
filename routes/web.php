@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\PertanyaanController;
+use App\Models\Pertanyaan;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -20,7 +21,14 @@ Route::get('/', function () {
 });
 
 Route::get('/home', function () {
-    return Inertia::render('Home');
+    return Inertia::render('Home', [
+        'quests' => Pertanyaan::all()->load('user'),
+    ]);
 })->name('home');
 
-Route::resource('/pertanyaan', PertanyaanController::class);
+// Route::get('/pertanyaan', [PertanyaanController::class, 'index']);
+
+Route::controller(PertanyaanController::class)->group(function () {
+    Route::get('/pertanyaan', 'index');
+    Route::get('/pertanyaan/{pertanyaan}', 'show');
+});

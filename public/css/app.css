@@ -646,6 +646,9 @@ video {
 .h-3 {
   height: 0.75rem;
 }
+.max-h-full {
+  max-height: 100%;
+}
 .w-full {
   width: 100%;
 }

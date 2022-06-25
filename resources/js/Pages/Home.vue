@@ -46,7 +46,7 @@
                             <p
                                 class="leading-none text-gray-900 dark:text-slate-50"
                             >
-                                Jonathan Reinink
+                                {{ quest.user.name }}
                             </p>
                             <p class="text-gray-600 dark:text-slate-400">
                                 Aug 18
@@ -60,22 +60,7 @@
 </template>
 
 <script setup>
-const quests = [
-    {
-        title: "perbedaan kucing sama anjing",
-        body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi id repudiandae rem, illo officia facilis illum modi suscipit eaque, excepturi culpa eligendi enim aperiam? Cupiditate natus molestiae nesciunt modi totam!",
-    },
-    {
-        title: "Matematika pytagoras",
-        body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi id repudiandae rem, illo officia facilis illum modi suscipit eaque, excepturi culpa eligendi enim aperiam? Cupiditate natus molestiae nesciunt modi totam!",
-    },
-    {
-        title: "Perbedaan herbivora dan karnivora",
-        body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi id repudiandae rem, illo officia facilis illum modi suscipit eaque, excepturi culpa eligendi enim aperiam? Cupiditate natus molestiae nesciunt modi totam!",
-    },
-    {
-        title: "Apa saja makanan bergizi",
-        body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi id repudiandae rem, illo officia facilis illum modi suscipit eaque, excepturi culpa eligendi enim aperiam? Cupiditate natus molestiae nesciunt modi totam!",
-    },
-];
+defineProps({
+    quests: Object,
+});
 </script>
