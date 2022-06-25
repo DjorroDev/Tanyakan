@@ -1,55 +1,72 @@
 <template>
-    <Card class="w-1/2 mx-auto">
+    <Card class="mx-auto w-1/2">
         <template #default>
             <h3 class="text-center text-4xl font-bold">Login</h3>
-            <div v-if="$page.props.flash.error" class="bg-red-100 border-l-4 border-red-500 mt-4 text-red-700 px-4 py-2" role="alert">
+            <div
+                v-if="$page.props.flash.error"
+                class="mt-4 border-l-4 border-red-500 bg-red-100 px-4 py-2 text-red-700"
+                role="alert"
+            >
                 <p class="font-bold">Error</p>
                 <p>Email atau Password tidak sama</p>
             </div>
-            <form @submit.prevent="submit" class="mt-8 space-y-4 4/5 mx-auto" action="#" method="POST">
+            <form
+                @submit.prevent="submit"
+                class="4/5 mx-auto mt-8 space-y-4"
+                action="#"
+                method="POST"
+            >
                 <input type="hidden" name="remember" value="true" />
-                <div class="rounded-md shadow-sm -space-y-px">
+                <div class="-space-y-px rounded-md shadow-sm">
                     <div>
-                        <label for="email-address" class="sr-only">Email address</label>
-                        <input 
+                        <label for="email-address" class="sr-only"
+                            >Email address</label
+                        >
+                        <input
                             v-model="form.email"
-                            id="email-address" 
+                            id="email-address"
                             name="email"
-                            type="email" 
-                            autocomplete="email" 
+                            type="email"
+                            autocomplete="email"
                             required=""
-                            class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-primary-500 focus:border-primary-500 focus:z-10 sm:text-sm dark:bg-base-700 dark:border-slate-500 dark:text-white"  
+                            class="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-primary-500 focus:outline-none focus:ring-primary-500 dark:border-slate-500 dark:bg-base-700 dark:text-white sm:text-sm"
                             placeholder="Email address"
                         />
                     </div>
                     <div>
                         <label for="password" class="sr-only">Password</label>
-                        <input 
+                        <input
                             v-model="form.password"
-                            id="password" 
-                            name="password" 
-                            type="password" 
-                            autocomplete="current-password" 
-                            required="" 
-                            class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-primary-500 focus:border-primary-500 focus:z-10 sm:text-sm dark:bg-base-700 dark:border-slate-500 dark:text-white" 
-                            placeholder="Password" 
-                            />
+                            id="password"
+                            name="password"
+                            type="password"
+                            autocomplete="current-password"
+                            required=""
+                            class="relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-primary-500 focus:outline-none focus:ring-primary-500 dark:border-slate-500 dark:bg-base-700 dark:text-white sm:text-sm"
+                            placeholder="Password"
+                        />
                     </div>
                 </div>
 
                 <div class="flex items-center justify-start">
                     <div class="text-sm">
                         Belum punya akun?
-                        <Link href="/register" method="get" class="font-medium text-primary-600 hover:text-primary-500"
-                        > Regristasi di sini! </Link>
+                        <Link
+                            href="/register"
+                            method="get"
+                            class="font-medium text-primary-600 hover:text-primary-500"
+                        >
+                            Regristasi di sini!
+                        </Link>
                     </div>
                 </div>
 
                 <div>
-                    <button 
-                    type="submit" 
-                    class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
-                    >Login
+                    <button
+                        type="submit"
+                        class="group relative flex w-full justify-center rounded-md border border-transparent bg-primary-600 py-2 px-4 text-sm font-medium text-white hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
+                    >
+                        Login
                     </button>
                 </div>
             </form>
@@ -59,7 +76,7 @@
 
 <script setup>
 import { useForm } from "@inertiajs/inertia-vue3";
-import Card from "../../Components/Card.vue"
+import Card from "../../Components/Card.vue";
 
 const form = useForm({
     email: null,
