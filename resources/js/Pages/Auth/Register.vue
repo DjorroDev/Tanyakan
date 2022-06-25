@@ -2,7 +2,7 @@
     <Card class="w-1/2 mx-auto">
         <template #default>
             <h3 class="text-center text-4xl">Register</h3>
-            <form class="mt-8 space-y-4 4/5 mx-auto" action="#" method="POST">
+            <form @submit.prevent="submit" class="mt-8 space-y-4 4/5 mx-auto" action="#" method="POST">
                 <input type="hidden" name="remember" value="true" />
                 <div class="rounded-md shadow-sm -space-y-px">
                     <div>
@@ -13,7 +13,7 @@
                             type="email" 
                             autocomplete="email" 
                             required="" 
-                            class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-primary-500 focus:border-primary-500 focus:z-10 sm:text-sm dark:bg-base-700 dark:border-slate-500" 
+                            class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-primary-500 focus:border-primary-500 focus:z-10 sm:text-sm dark:bg-base-700 dark:border-slate-500 dark:text-white" 
                             placeholder="Email address"
                         />
                     </div>
@@ -25,7 +25,7 @@
                             type="password" 
                             autocomplete="current-password" 
                             required="" 
-                            class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-primary-500 focus:border-primary-500 focus:z-10 sm:text-sm dark:bg-base-700 dark:border-slate-500" 
+                            class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-primary-500 focus:border-primary-500 focus:z-10 sm:text-sm dark:bg-base-700 dark:border-slate-500 dark:text-white" 
                             placeholder="Password" 
                             />
                     </div>
@@ -54,5 +54,15 @@
 </template>
 
 <script setup>
+import { useForm } from "@inertiajs/inertia-vue3"; 
 import Card from "../../Components/Card.vue"
+
+const form = useForm({
+    email: null,
+    password: null,
+});
+
+let submit = () => {
+    form.post("/register", form);
+};
 </script>

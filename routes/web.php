@@ -29,7 +29,11 @@ Route::get('/home', function () {
 })->name('home');
 
 Route::get('/login', [LoginController::class, 'create']);
+Route::post('/login', [LoginController::class, 'store']);
+
 Route::get('/register', [RegisterController::class, 'create']);
+Route::post('/register', [RegisterController::class, 'store']);
+
 
 
 Route::resource('pertanyaan', PertanyaanController::class);

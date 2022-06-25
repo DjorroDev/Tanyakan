@@ -2,9 +2,6 @@
     <header>
         <nav class="bg-base-700 px-2 py-3 text-white shadow md:px-4 lg:px-10">
             <div class="relative flex items-center gap-4">
-                <DisclosureButton class="py-2 md:hidden">
-                    <MenuIcon class="h-6 w-6" />
-                </DisclosureButton>
                 <div class="flex flex-1 items-center lg:justify-start">
                     <Link href="/" class="text-xl font-bold text-primary-500"
                         >Tanyakan</Link
