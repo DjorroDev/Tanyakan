@@ -1,20 +1,4 @@
 <template>
-    <!-- Ajukan pertanyaan -->
-    <section class="px-4 py-6 sm:px-0">
-        <h1 class="mb-1 text-3xl">Tanyakan pertanyaan</h1>
-        <div
-            class="h-min-content rounded-lg border-2 border-slate-500 bg-slate-100 p-5 shadow dark:bg-base-800"
-        >
-            <h3 class="mb-3 text-xl">Ingin bertanya? Tanyakan sekarang!</h3>
-            <button
-                class="rounded-lg bg-primary-600 px-3 py-2 text-slate-50 hover:bg-primary-700 active:bg-primary-800"
-            >
-                Tanya
-            </button>
-        </div>
-    </section>
-
-    <!-- terbaru -->
     <section class="px-4 py-6 sm:px-0">
         <h1 class="mb-1 text-3xl">Pertanyaan terbaru</h1>
         <div
@@ -60,22 +44,7 @@
 </template>
 
 <script setup>
-const quests = [
-    {
-        title: "perbedaan kucing sama anjing",
-        body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi id repudiandae rem, illo officia facilis illum modi suscipit eaque, excepturi culpa eligendi enim aperiam? Cupiditate natus molestiae nesciunt modi totam!",
-    },
-    {
-        title: "Matematika pytagoras",
-        body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi id repudiandae rem, illo officia facilis illum modi suscipit eaque, excepturi culpa eligendi enim aperiam? Cupiditate natus molestiae nesciunt modi totam!",
-    },
-    {
-        title: "Perbedaan herbivora dan karnivora",
-        body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi id repudiandae rem, illo officia facilis illum modi suscipit eaque, excepturi culpa eligendi enim aperiam? Cupiditate natus molestiae nesciunt modi totam!",
-    },
-    {
-        title: "Apa saja makanan bergizi",
-        body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi id repudiandae rem, illo officia facilis illum modi suscipit eaque, excepturi culpa eligendi enim aperiam? Cupiditate natus molestiae nesciunt modi totam!",
-    },
-];
+defineProps({
+    quests: Object,
+});
 </script>

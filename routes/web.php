@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PertanyaanController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -21,3 +22,5 @@ Route::get('/', function () {
 Route::get('/home', function () {
     return Inertia::render('Home');
 })->name('home');
+
+Route::resource('/pertanyaan', PertanyaanController::class);
