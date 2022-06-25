@@ -81,10 +81,14 @@ import Card from "../../Components/Card.vue";
 import Button from "../../Components/Button.vue";
 import { useForm } from "@inertiajs/inertia-vue3";
 
+let props = defineProps({
+    quest: Object,
+});
+
 const form = useForm({
-    title: null,
-    body: null,
-    tingkat: null,
+    title: props.quest.title,
+    body: props.quest.body,
+    tingkat: props.quest.tingkat,
 });
 
 let submit = () => {

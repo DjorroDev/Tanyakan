@@ -1,4 +1,55 @@
 <template>
+    <Card>
+        <template #title>Pertanyaan ku</template>
+        <template #default>
+            <h1 v-if="!myQuest" class="text-2xl">
+                Kamu Belum bertanya. Ayo tanyakan sekarang!
+            </h1>
+            <div v-else>
+                <div v-for="my in myQuest" :key="my.id">
+                    <table
+                        class="w-full table-fixed border-collapse border border-slate-500"
+                    >
+                        <tbody>
+                            <tr>
+                                <td
+                                    class="border bg-base-100 px-8 py-2 dark:bg-base-900"
+                                >
+                                    {{ my.title }}
+                                </td>
+                                <td
+                                    class="border bg-base-100 px-8 py-2 dark:bg-base-900"
+                                >
+                                    {{
+                                        moment(my.created_at)
+                                            .startOf()
+                                            .fromNow()
+                                    }}
+                                </td>
+                                <td
+                                    class="border bg-base-100 px-8 py-2 dark:bg-base-900"
+                                >
+                                    <Link
+                                        :href="`/pertanyaan/${my.id}/edit`"
+                                        class="text-primary-500 hover:text-primary-50 active:text-primary-700"
+                                        >Edit</Link
+                                    >
+                                    Hapus
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <Button class="mt-5">
+                <Link href="/pertanyaan/create">Tanya</Link>
+            </Button>
+        </template>
+    </Card>
+    <FlashMessage :type="'success'" v-if="$page.props.flash.success">
+        {{ $page.props.flash.success }}
+    </FlashMessage>
+
     <section class="px-4 py-6 sm:px-0">
         <h1 class="mb-1 text-3xl">Pertanyaan</h1>
         <div
@@ -48,7 +99,13 @@
 </template>
 
 <script setup>
+import Card from "../../Components/Card.vue";
+import Button from "../../Components/Button.vue";
+import FlashMessage from "../../Components/FlashMessage.vue";
+import moment from "moment";
+
 defineProps({
     quests: Object,
+    myQuest: Object,
 });
 </script>

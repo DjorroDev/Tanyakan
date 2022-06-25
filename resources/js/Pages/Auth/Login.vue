@@ -2,7 +2,7 @@
     <Card class="mx-auto w-1/2">
         <template #default>
             <h3 class="text-center text-4xl font-bold">Login</h3>
-            <FlashMessage type="error">
+            <FlashMessage :type="'error'" v-if="$page.props.flash.error">
                 Email atau Password tidak sama
             </FlashMessage>
             <form

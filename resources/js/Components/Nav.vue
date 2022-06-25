@@ -31,6 +31,7 @@
                 >Register</Link
             >
             <Link
+                as="button"
                 v-if="user"
                 method="post"
                 class="text-primary-500 hover:text-primary-50 active:text-primary-700"
