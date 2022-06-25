@@ -1,18 +1,17 @@
 <template>
     <!-- Ajukan pertanyaan -->
-    <section class="px-4 py-6 sm:px-0">
-        <h1 class="mb-1 text-3xl">Tanyakan pertanyaan</h1>
-        <div
-            class="h-min-content rounded-lg border-2 border-slate-500 bg-slate-100 p-5 shadow dark:bg-base-800"
-        >
+    <Card>
+        <template #title>Tanyakan Pertanyaan</template>
+        <template #default>
             <h3 class="mb-3 text-xl">Ingin bertanya? Tanyakan sekarang!</h3>
-            <button
+            <Link
+                href="/pertanyaan/create"
                 class="rounded-lg bg-primary-600 px-3 py-2 text-slate-50 hover:bg-primary-700 active:bg-primary-800"
             >
                 Tanya
-            </button>
-        </div>
-    </section>
+            </Link>
+        </template>
+    </Card>
 
     <!-- terbaru -->
     <section class="px-4 py-6 sm:px-0">
@@ -21,22 +20,26 @@
             class="h-min-content rounded-lg border-2 border-slate-500 bg-slate-100 p-5 shadow dark:bg-base-800"
         >
             <div
-                v-for="(quest, index) in quests"
-                :key="index"
+                v-for="quest in quests"
+                :key="quest.id"
                 class="mb-4 w-full max-w-sm lg:flex lg:max-w-full"
             >
                 <div
                     class="flex flex-col justify-between rounded-md border border-slate-200 p-4 leading-normal dark:border-slate-500"
                 >
                     <div class="mb-8">
-                        <div
-                            class="mb-2 text-xl font-bold text-gray-900 dark:text-slate-50"
-                        >
-                            {{ quest.title }}
-                        </div>
-                        <p class="text-base text-gray-700 dark:text-slate-200">
-                            {{ quest.body }}
-                        </p>
+                        <Link :href="`/pertanyaan/${quest.id}`">
+                            <div
+                                class="mb-2 text-xl font-bold text-gray-900 dark:text-slate-50"
+                            >
+                                {{ quest.title }}
+                            </div>
+                            <p
+                                class="text-base text-gray-700 dark:text-slate-200"
+                            >
+                                {{ quest.body }}
+                            </p>
+                        </Link>
                     </div>
                     <div class="flex items-center">
                         <div
@@ -60,6 +63,7 @@
 </template>
 
 <script setup>
+import Card from "../Components/Card";
 defineProps({
     quests: Object,
 });

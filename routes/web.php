@@ -26,9 +26,10 @@ Route::get('/home', function () {
     ]);
 })->name('home');
 
-// Route::get('/pertanyaan', [PertanyaanController::class, 'index']);
+Route::resource('pertanyaan', PertanyaanController::class);
 
-Route::controller(PertanyaanController::class)->group(function () {
-    Route::get('/pertanyaan', 'index');
-    Route::get('/pertanyaan/{pertanyaan}', 'show');
-});
+// Route::controller(PertanyaanController::class)->group(function () {
+//     Route::get('/pertanyaan', 'index');
+//     Route::get('/pertanyaan/{pertanyaan}', 'show');
+//     Route::get('/pertanyaan/create', 'create');
+// });
