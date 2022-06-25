@@ -18,7 +18,9 @@
                                 <td
                                     class="border bg-base-100 px-8 py-2 dark:bg-base-900"
                                 >
-                                    {{ my.title }}
+                                    <Link :href="`/pertanyaan/${my.id}`">{{
+                                        my.title
+                                    }}</Link>
                                 </td>
                                 <td
                                     class="border bg-base-100 px-8 py-2 dark:bg-base-900"
@@ -64,23 +66,19 @@
         <div
             class="h-min-content rounded-lg border-2 border-slate-500 bg-slate-100 p-5 shadow dark:bg-base-800"
         >
-            <div
-                v-for="quest in quests"
-                :key="quest.id"
-                class="mb-4 w-full max-w-sm lg:max-w-full"
-            >
+            <div v-for="quest in quests" :key="quest.id" class="mb-4 w-full">
                 <div
                     class="flex flex-col justify-between rounded-md border border-slate-200 p-4 leading-normal dark:border-slate-500"
                 >
                     <div class="mb-8">
-                        <Link :href="`/pertanyaan/${quest.id}`">
+                        <Link class="group" :href="`/pertanyaan/${quest.id}`">
                             <div
-                                class="mb-2 text-xl font-bold text-gray-900 dark:text-slate-50"
+                                class="mb-2 text-xl font-bold text-gray-900 group-hover:text-primary-600 dark:text-slate-50"
                             >
                                 {{ quest.title }}
                             </div>
                             <p
-                                class="text-base text-gray-700 dark:text-slate-200"
+                                class="text-base text-gray-700 group-hover:text-primary-600 dark:text-slate-200"
                             >
                                 {{ quest.body }}
                             </p>
@@ -97,7 +95,7 @@
                                 {{ quest.user.name }}
                             </p>
                             <p class="text-gray-600 dark:text-slate-400">
-                                Aug 18
+                                member
                             </p>
                         </div>
                     </div>

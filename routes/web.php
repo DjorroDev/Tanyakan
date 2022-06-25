@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\JawabanController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\PertanyaanController;
@@ -40,8 +41,4 @@ Route::post('/register', [RegisterController::class, 'store'])->middleware('gues
 
 Route::resource('pertanyaan', PertanyaanController::class)->middleware('auth');
 
-// Route::controller(PertanyaanController::class)->group(function () {
-//     Route::get('/pertanyaan', 'index');
-//     Route::get('/pertanyaan/{pertanyaan}', 'show');
-//     Route::get('/pertanyaan/create', 'create');
-// });
+Route::post('/jawaban', [JawabanController::class, 'store']);

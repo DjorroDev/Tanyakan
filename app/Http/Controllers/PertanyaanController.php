@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Jawaban;
 use App\Models\Pertanyaan;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -63,7 +65,9 @@ class PertanyaanController extends Controller
     public function show(Pertanyaan $pertanyaan)
     {
         return Inertia::render('Pertanyaan/Show', [
-            'quest' => $pertanyaan
+            'quest' => $pertanyaan,
+            'questBy' => User::find($pertanyaan->user_id),
+            'answers' => Jawaban::where('pertanyaan_id', $pertanyaan->id)->with('user')->get()
         ]);
     }
 
