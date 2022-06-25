@@ -1,8 +1,11 @@
 <template>
+    <FlashMessage :type="'success'" v-if="$page.props.flash.success">
+        {{ $page.props.flash.success }}
+    </FlashMessage>
     <Card>
         <template #title>Pertanyaan ku</template>
         <template #default>
-            <h1 v-if="!myQuest" class="text-2xl">
+            <h1 v-if="myQuest.length === 0" class="text-2xl">
                 Kamu Belum bertanya. Ayo tanyakan sekarang!
             </h1>
             <div v-else>
@@ -31,24 +34,30 @@
                                 >
                                     <Link
                                         :href="`/pertanyaan/${my.id}/edit`"
-                                        class="text-primary-500 hover:text-primary-50 active:text-primary-700"
+                                        class="rounded-lg bg-primary-600 px-2 py-1 text-sm text-slate-50 hover:bg-primary-700 active:bg-primary-800"
                                         >Edit</Link
                                     >
-                                    Hapus
+                                    <Link
+                                        :href="`/pertanyaan/${my.id}`"
+                                        method="delete"
+                                        class="ml-2 rounded-lg bg-red-600 px-2 py-1 text-sm text-slate-50 hover:bg-red-700 active:bg-red-800"
+                                        >Hapus</Link
+                                    >
                                 </td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
-            <Button class="mt-5">
-                <Link href="/pertanyaan/create">Tanya</Link>
-            </Button>
+            <label class="my-4 block">Tanyakan baru</label>
+            <Link
+                href="/pertanyaan/create"
+                class="rounded-lg bg-primary-600 px-3 py-2 text-slate-50 hover:bg-primary-700 active:bg-primary-800"
+            >
+                Tanya <PlusIcon class="inline h-5 w-5" />
+            </Link>
         </template>
     </Card>
-    <FlashMessage :type="'success'" v-if="$page.props.flash.success">
-        {{ $page.props.flash.success }}
-    </FlashMessage>
 
     <section class="px-4 py-6 sm:px-0">
         <h1 class="mb-1 text-3xl">Pertanyaan</h1>
@@ -100,9 +109,9 @@
 
 <script setup>
 import Card from "../../Components/Card.vue";
-import Button from "../../Components/Button.vue";
 import FlashMessage from "../../Components/FlashMessage.vue";
 import moment from "moment";
+import { PlusIcon } from "@heroicons/vue/solid";
 
 defineProps({
     quests: Object,

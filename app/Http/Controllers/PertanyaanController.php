@@ -94,7 +94,17 @@ class PertanyaanController extends Controller
      */
     public function update(Request $request, Pertanyaan $pertanyaan)
     {
-        //
+        $validatedData = $request->validate([
+            'title' => 'required|max:255',
+            'body' => 'required',
+            'tingkat' => 'required',
+        ]);
+
+        Pertanyaan::where('id', $pertanyaan->id)
+            ->update($validatedData);
+
+
+        return redirect('/pertanyaan')->with('success', 'Data berhasil diperbarui');
     }
 
     /**
@@ -105,6 +115,7 @@ class PertanyaanController extends Controller
      */
     public function destroy(Pertanyaan $pertanyaan)
     {
-        //
+        Pertanyaan::destroy($pertanyaan->id);
+        return redirect('/pertanyaan')->with('success', 'Data berhasil dihapus');
     }
 }

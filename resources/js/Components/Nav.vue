@@ -14,6 +14,11 @@
                             class="hover:text-primary-500 active:text-primary-700"
                             >Home</Link
                         >
+                        <Link
+                            href="/pertanyaan"
+                            class="hover:text-primary-500 active:text-primary-700"
+                            >Pertanyaan</Link
+                        >
                     </div>
                 </div>
             </div>

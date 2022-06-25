@@ -1,6 +1,6 @@
 <template>
     <Card>
-        <template #title>Buat pertanyaan</template>
+        <template #title>Ubah pertanyaan</template>
         <template #default>
             <form @submit.prevent="submit" class="space-y-4">
                 <div class="grid grid-cols-3 gap-6">
@@ -70,7 +70,7 @@
                     </p>
                 </div>
 
-                <Button type="submit"> Tanyakan </Button>
+                <Button type="submit"> Edit </Button>
             </form>
         </template>
     </Card>
@@ -92,6 +92,6 @@ const form = useForm({
 });
 
 let submit = () => {
-    form.post("/pertanyaan", form);
+    form.put(`/pertanyaan/${props.quest.id}`, form);
 };
 </script>
