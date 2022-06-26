@@ -20,7 +20,11 @@ class PertanyaanController extends Controller
         // dd(Pertanyaan::get()->where('user_id', auth()->user()->id));
 
         return Inertia::render('Pertanyaan/Index', [
-            'quests' => Pertanyaan::with('user')->latest()->get(),
+            'quests' => Pertanyaan::query()
+                ->when(Request()->input('search'), function ($query, $search) {
+                    $query->where('title', 'like', '%' . $search . '%');
+                })
+                ->with('user')->latest()->get(),
             'myQuest' =>Pertanyaan::get()->where('user_id', auth()->user()->id)
         ]);
     }

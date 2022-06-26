@@ -40,6 +40,7 @@
                                         >Edit</Link
                                     >
                                     <Link
+                                        as="button"
                                         :href="`/pertanyaan/${my.id}`"
                                         method="delete"
                                         class="ml-2 rounded-lg bg-red-600 px-2 py-1 text-sm text-slate-50 hover:bg-red-700 active:bg-red-800"
@@ -60,6 +61,27 @@
             </Link>
         </template>
     </Card>
+
+    <!-- Search -->
+    <section>
+        <div class="flex justify-center">
+            <div class="mb-3 xl:w-96">
+                <div
+                    class="input-group relative mb-4 flex w-full flex-wrap items-stretch rounded"
+                >
+                    <label>Cari Pertanyaan</label>
+                    <input
+                        v-model="search"
+                        type="search"
+                        class="form-control relative m-0 block w-full min-w-0 flex-auto rounded border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-1.5 text-base font-normal text-gray-700 transition ease-in-out focus:border-blue-600 focus:bg-white focus:text-gray-700 focus:outline-none"
+                        placeholder="Search"
+                        aria-label="Search"
+                        aria-describedby="button-addon2"
+                    />
+                </div>
+            </div>
+        </div>
+    </section>
 
     <section class="px-4 py-6 sm:px-0">
         <h1 class="mb-1 text-3xl">Pertanyaan</h1>
@@ -110,9 +132,26 @@ import Card from "../../Components/Card.vue";
 import FlashMessage from "../../Components/FlashMessage.vue";
 import moment from "moment";
 import { PlusIcon } from "@heroicons/vue/solid";
+import { ref, watch } from "vue";
+import { Inertia } from "@inertiajs/inertia";
 
 defineProps({
     quests: Object,
     myQuest: Object,
+});
+
+let search = ref("");
+
+watch(search, (value) => {
+    Inertia.get(
+        "/pertanyaan",
+        {
+            search: value,
+        },
+        {
+            preserveState: true,
+            preserveScroll: true,
+        }
+    );
 });
 </script>
